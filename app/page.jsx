@@ -11,6 +11,10 @@ export default function Home() {
           Play Game
       </Link>
       <br /><br />
+      <Link href={'/bedwars'} className="inline-block px-5 py-2 bg-blue-500 text-white no-underline rounded-md">
+          Multiplayer
+      </Link>
+      <br /><br />
       <Link href={'https://github.com/khazbxo/minecraft'} className="inline-block px-5 py-2 bg-gray-800 text-white no-underline rounded-md">
           View Repository
       </Link>
