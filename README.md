@@ -1,42 +1,59 @@
-# Minecraft Project
+# React Minecraft
 
-Welcome to the Minecraft Project! This project is designed to enhance your Minecraft experience with custom modifications and features.
+A Minecraft-style voxel builder built with React Three Fiber. Place and remove blocks in a 3D world using first-person controls, with physics and persistent saves.
 
-## Features
+## Controls
 
-- Custom mods
-- Enhanced gameplay
-- New items and blocks
-- Improved graphics
+| Key | Action |
+|---|---|
+| W/A/S/D or Arrow Keys | Move |
+| Space | Jump |
+| Mouse | Look around (click to lock) |
+| Left Click | Place block on adjacent face |
+| Alt + Click | Remove block |
+| 1-5 | Select texture (dirt, grass, glass, wood, log) |
 
-## Installation
+## Setup
 
-1. Download the latest release from the [releases page](https://github.com/khabzox/minecraft/releases).
-2. Extract the downloaded files to your Minecraft `mods` folder.
-3. Launch Minecraft and enjoy the new features!
+```bash
+npm install
+npm run dev
+```
 
-## Usage
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- To use the custom mods, simply start a new game or load an existing one.
-- Explore the new items and blocks added to the game.
-- Enjoy the improved graphics and enhanced gameplay.
+## Tech Stack
 
-## Contributing
+- **Next.js 14** (App Router)
+- **React Three Fiber** — React renderer for Three.js
+- **@react-three/cannon** — Physics engine
+- **@react-three/drei** — Useful R3F helpers (Sky, PointerLockControls)
+- **Zustand** — State management
+- **localStorage** — World persistence
 
-We welcome contributions! Please follow these steps to contribute:
+## Project Structure
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
+```
+app/
+  page.jsx          # Landing page
+  game/page.jsx     # Game route
+components/
+  game.jsx          # Main Canvas + Physics scene
+  Player.jsx        # First-person player with physics
+  Cube.jsx          # Individual block component
+  Cubes.jsx         # Renders all placed blocks
+  Ground.jsx        # Ground plane
+  FPV.jsx           # PointerLockControls
+  Menu.jsx          # Save/Reset UI
+  TextureSelector.jsx  # Texture HUD
+hooks/
+  useStore.jsx      # Zustand store (cubes, texture, save/reset)
+  useKeyboard.jsx   # Keyboard input tracking
+utils/
+  textures.js       # Three.js texture loader
+  images.js         # Asset path constants
+```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or feedback, please open an issue on the [GitHub repository](https://github.com/khabzox/minecraft).
-
-Happy crafting!
+MIT

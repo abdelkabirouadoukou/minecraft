@@ -10,8 +10,6 @@ export const Cubes = () => {
         return [state.cubes];
     });
 
-    console.log('Cubes:', cubes); // Debugging log to check cubes data
-
     return cubes.map(({ key, pos, texture }) => (
         <Cube key={key} position={pos} texture={texture} />
     ));
