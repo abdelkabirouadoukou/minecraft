@@ -11,7 +11,7 @@ export default function Home() {
           Play Game
       </Link>
       <br /><br />
-      <Link href={'https://github.com/khazbxo/minecraft'} className="inline-block px-5 py-2 bg-gray-800 text-white no-underline rounded-md">
+      <Link href={'https://github.com/abdelkabirouadoukou/minecraft'} className="inline-block px-5 py-2 bg-gray-800 text-white no-underline rounded-md">
           View Repository
       </Link>
     </div>
