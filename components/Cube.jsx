@@ -1,10 +1,15 @@
 import { useBox } from "@react-three/cannon";
+import { useThree } from "@react-three/fiber";
 import { useState } from "react";
+import { Vector3 } from "three";
 import * as textures from "@/utils/textures";
 import { useStore } from "@/hooks/useStore";
 
+const REACH_LIMIT = 6;
+
 export const Cube = ({ position, texture }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { camera } = useThree();
   const [ref] = useBox(() => ({
     type: "Static",
     position,
@@ -32,8 +37,10 @@ export const Cube = ({ position, texture }) => {
       }}
       onClick={(e) => {
         e.stopPropagation();
-        const clickedFace = Math.floor(e.faceIndex / 2);
         const { x, y, z } = ref.current.position;
+        const dist = camera.position.distanceTo(new Vector3(x, y, z));
+        if (dist > REACH_LIMIT) return;
+        const clickedFace = Math.floor(e.faceIndex / 2);
         if (e.altKey) {
           removeCube(x, y, z);
           return;
